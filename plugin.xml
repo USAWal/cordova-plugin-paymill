@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-paymill"
+    version="0.0.1">
+    <name>Paymill</name>
+    <description>Cordova plugin for Paymill</description>
+    <author>Valerii Utiaganov</author>
+    <keywords>paymill,payment</keywords>
+    <license>Apache 2.0 License</license>
+    <info>
+      Don't forget to install the Mobile App to create transactions and preauthorizations directly. (more info at https://developers.paymill.com/guides/integration/mobile-sdk)
+    </info>
+    <platform name="android">
+      <preference name="PAYMILL_PUBLIC_KEY" />
+    </platform>
+</plugin>
