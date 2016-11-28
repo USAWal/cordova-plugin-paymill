@@ -3,6 +3,7 @@
 * Configurable mode
 * Double check jar including way
 * Implement get token
+* Return all transaction values
 
 ## License
 

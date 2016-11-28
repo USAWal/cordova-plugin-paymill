@@ -89,6 +89,7 @@ public class Paymill extends CordovaPlugin {
           response
             .put(transaction.getId());
           callbackContext.success(response);
+          PMManager.removeListener(this);
         }
       };
       PMManager.addListener(listener);
