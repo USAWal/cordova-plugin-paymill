@@ -9,9 +9,30 @@
     <keywords>paymill,payment</keywords>
     <license>Apache 2.0 License</license>
     <info>
-      Don't forget to install the Mobile App to create transactions and preauthorizations directly. (more info at https://developers.paymill.com/guides/integration/mobile-sdk)
+      Don't forget to install the Mobile App to create transactions and preauthorizations directly.
+      More info at https://developers.paymill.com/guides/integration/mobile-sdk
     </info>
+    <preference name="PAYMILL_PUBLIC_KEY" />
+    <js-module src="www/paymill.js" name="Paymill">
+      <clobbers target="paymill" />
+    </js-module>
     <platform name="android">
-      <preference name="PAYMILL_PUBLIC_KEY" />
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="Paymill">
+          <param name="android-package" value="ee.ekvu.cordova.paymill.Paymill"/>
+           <param name="onload" value="true" />
+        </feature>
+      </config-file>
+      <config-file target="res/values/strings.xml" parent="/resources">
+        <string name="paymill_public_key">$PAYMILL_PUBLIC_KEY</string>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="android.permission.INTERNET" />
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <service android:name="com.paymill.android.service.PMService" android:enabled="true" android:exported="false"></service>
+      </config-file>
+      <source-file src="src/android/libs/android-sdk-1.2.0.jar" target-dir="libs" />
+      <source-file src="src/android/ee/ekvu/cordova/paymill/Paymill.java" target-dir="src/ee/ekvu/cordova/paymill" />
     </platform>
 </plugin>
