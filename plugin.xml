@@ -13,18 +13,20 @@
       More info at https://developers.paymill.com/guides/integration/mobile-sdk
     </info>
     <preference name="PAYMILL_PUBLIC_KEY" />
+    <preference name="PAYMILL_TEST_MODE" default="ON" />
     <js-module src="www/paymill.js" name="Paymill">
       <clobbers target="paymill" />
     </js-module>
     <platform name="android">
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="Paymill">
-          <param name="android-package" value="ee.ekvu.cordova.paymill.Paymill"/>
+          <param name="android-package" value="com.gertat.cordova.paymill.Paymill"/>
            <param name="onload" value="true" />
         </feature>
       </config-file>
       <config-file target="res/values/strings.xml" parent="/resources">
         <string name="paymill_public_key">$PAYMILL_PUBLIC_KEY</string>
+        <string name="paymill_test_mode">$PAYMILL_TEST_MODE</string>
       </config-file>
       <config-file target="AndroidManifest.xml" parent="/manifest">
         <uses-permission android:name="android.permission.INTERNET" />
@@ -33,6 +35,6 @@
         <service android:name="com.paymill.android.service.PMService" android:enabled="true" android:exported="false"></service>
       </config-file>
       <source-file src="src/android/libs/android-sdk-1.2.0.jar" target-dir="libs" />
-      <source-file src="src/android/ee/ekvu/cordova/paymill/Paymill.java" target-dir="src/ee/ekvu/cordova/paymill" />
+      <source-file src="src/android/com/gertat/cordova/paymill/Paymill.java" target-dir="src/com/gertat/cordova/paymill" />
     </platform>
 </plugin>

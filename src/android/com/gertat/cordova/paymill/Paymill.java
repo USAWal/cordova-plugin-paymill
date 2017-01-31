@@ -1,4 +1,4 @@
-package ee.ekvu.cordova.paymill;
+package com.gertat.cordova.paymill;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -44,7 +44,8 @@ public class Paymill extends CordovaPlugin {
     Resources resources = application.getResources();
 
     String  paymillPublicKey = resources.getString(resources.getIdentifier("paymill_public_key", "string", packageName));
-    PMManager.init(activity.getApplicationContext(), PMService.ServiceMode.TEST, paymillPublicKey, null, null);
+    String  paymillTestMode = resources.getString(resources.getIdentifier("paymill_test_mode", "string", packageName));
+    PMManager.init(activity.getApplicationContext(), paymillTestMode.equals("OFF") ? PMService.ServiceMode.LIVE : PMService.ServiceMode.TEST, paymillPublicKey, null, null);
 
     Log.d(LOG_TAG, "Paymill is initialized now.");
   }
